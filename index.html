@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cricket Overlay</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: transparent;
+    color: white;
+    overflow: hidden;
+  }
+
+  #scoreboard {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    font-size: 30px;
+    backdrop-filter: blur(6px);
+    padding: 10px 25px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .score-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+  }
+
+  .label {
+    font-size: 18px;
+    color: #cccccc;
+  }
+
+  #batsman, #bowler {
+    font-weight: bold;
+    font-size: 28px;
+  }
+
+  #runs-count {
+    color: #00ff00;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  #wickets {
+    color: #ff4444;
+    font-size: 32px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div id="scoreboard">
+    <div class="score-item">
+      <span class="label">Batter:</span>
+      <span id="batsman">Batter</span>
+    </div>
+    <div class="score-item">
+      <span class="label">Bowler:</span>
+      <span id="bowler">Bowler</span>
+    </div>
+    <div class="score-item">
+      <span class="label">Runs:</span>
+      <span id="runs-count">0</span>
+    </div>
+    <div class="score-item">
+      <span class="label">Wickets:</span>
+      <span id="wickets">0</span>
+    </div>
+  </div>
+
+  <script src="overlay.js"></script>
+</body>
+</html>
+

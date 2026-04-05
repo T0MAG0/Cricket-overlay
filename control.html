@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cricket Control</title>
+<style>
+  body { font-family: sans-serif; padding: 12px; }
+  button { font-size: 20px; margin: 6px; padding: 10px; }
+  input, select { font-size: 18px; margin: 4px; }
+  #mini { margin-top: 20px; padding: 10px; background: #111; color: white; }
+</style>
+</head>
+<body>
+
+<h2>Control Panel</h2>
+
+<input id="batter" placeholder="Batter">
+<input id="bowler" placeholder="Bowler"><br>
+
+<select id="mode">
+  <option value="wickets">Runs + Wickets</option>
+  <option value="runs-only">Runs Only</option>
+</select><br>
+
+<button onclick="addRuns(1)">+1</button>
+<button onclick="addRuns(4)">+4</button>
+<button onclick="addRuns(6)">+6</button><br>
+
+<button onclick="wicket()">WICKET</button>
+<button onclick="reset()">RESET</button>
+
+<div id="mini"></div>
+
+<script>
+async function send(url, body={}) {
+  await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+}
+
+function addRuns(n) { send("/add-runs", { amount: n }); }
+function wicket() { send("/wicket"); }
+function reset() { send("/reset"); }
+
+async function sync() {
+  const s = await fetch("/state").then(r => r.json());
+
+  document.getElementById("mini").innerHTML = `
+    Batter: ${s.batter}<br>
+    Bowler: ${s.bowler}<br>
+    Runs: ${s.runs}<br>
+    Wickets: ${s.wickets}<br>
+    Mode: ${s.mode}
+  `;
+
+  send("/update", {
+    batter: document.getElementById("batter").value || s.batter,
+    bowler: document.getElementById("bowler").value || s.bowler,
+    mode: document.getElementById("mode").value
+  });
+}
+
+setInterval(sync, 500);
+</script>
+
+</body>
+</html>

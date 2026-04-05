@@ -1,0 +1,9 @@
+{
+  "name": "overlay",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.22.1",
+    "obs-websocket-js": "^5.0.7",
+    "socket.io": "^4.8.3"
+  }
+}
