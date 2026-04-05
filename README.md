@@ -32,8 +32,8 @@ Designed for live matches, streaming, or backyard cricket setups.
 ### 1. Clone the repo
 
 ```
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
-cd YOUR-REPO
+git clone https://github.com/T0MAG0/Cricket-overlay.git
+cd cricket-overlay
 ```
 
 ### 2. Install dependencies
@@ -158,24 +158,3 @@ http://192.168.x.x:3000
 * Vanilla JS (no frameworks)
 * HTML/CSS
 
----
-
-## 💡 Future Ideas
-
-* Replay system
-* Voice control
-* AI-assisted scoring
-* Player stats tracking
-* Multi-match dashboard
-
----
-
-## 📄 License
-
-MIT License (or whatever you choose)
-
----
-
-## 🙌 Credits
-
-Built as a custom live scoring system for real cricket matches.
